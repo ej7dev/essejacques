@@ -12,6 +12,10 @@ DirectorySlash Off
   RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://essejacques.me%{REQUEST_URI} [L,R=301]
+  # A folder without a page of its own (/img, /fonts) is not a page: answer 404 instead of looping on the slash.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html !-f
+  RewriteRule ^ - [R=404,L]
   # /portfolio/ and /portfolio serve the same page: keep the URL without a trailing slash.
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteCond %{REQUEST_URI} (.+)/$
