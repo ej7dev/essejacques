@@ -1,7 +1,5 @@
 # Static Nuxt build served by LiteSpeed or Apache (Hostinger).
 ErrorDocument 404 /404.html
-# Old WordPress kept aside on the server until it is deleted: never served.
-RedirectMatch 404 ^/_old-
 DirectoryIndex index.html
 # Pages live in folders (/about/index.html): serve /about directly instead of redirecting to /about/.
 DirectorySlash Off
