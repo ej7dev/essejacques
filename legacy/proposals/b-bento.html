@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B. Bento grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.grid { padding: 0 var(--g); display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 240px; gap: 18px; }
+.cell { position: relative; border-radius: 14px; overflow: hidden; background: #151515; grid-column: span 2; grid-row: span 2; }
+.cell:nth-child(1) { grid-column: span 4; }
+.cell:nth-child(4), .cell:nth-child(5) { grid-column: span 3; }
+.cell:nth-child(6) { grid-column: span 4; }
+.cell img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: top; transition: transform .8s cubic-bezier(.2,.7,.1,1), filter .5s; }
+.cell::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.88)); }
+.cell:hover img { transform: scale(1.06); filter: brightness(.75); }
+.info { position: absolute; z-index: 2; left: 26px; right: 26px; bottom: 22px; }
+.info h2 { margin: 12px 0 0; font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 5vw, 5rem); line-height: .9; text-transform: uppercase; }
+.info .m { margin: 6px 0 0; color: #ddd; }
+.info .s { margin: 0; max-height: 0; overflow: hidden; color: var(--muted); font-size: .85rem; transition: max-height .4s, margin .4s; }
+.cell:hover .s { max-height: 40px; margin-top: 8px; }
+.arrow { position: absolute; z-index: 2; top: 20px; right: 20px; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: #000; display: grid; place-items: center; transform: scale(0); transition: transform .35s cubic-bezier(.2,.7,.1,1.3); }
+.cell:hover .arrow { transform: scale(1); }
+.filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 0 var(--g) 32px; }
+.filters span { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); font-size: .85rem; }
+.filters span:first-child { background: #fff; color: #000; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; grid-auto-rows: 320px; } .cell, .cell:nth-child(n) { grid-column: auto; grid-row: auto; } }
+</style></head>
+<body>
+<div class="bar"><b>EJ</b><span>About &nbsp; Portfolio &nbsp; Contact</span></div>
+<section class="intro"><div><h1>Selected work</h1><p>Option B: bento grid</p></div></section>
+<div class="filters"><span>All</span><span>Fintech</span><span>Public sector</span><span>SaaS</span><span>Websites</span><span>Mobile</span></div>
+<section class="grid" id="grid"></section>
+<div class="more"><a href="#">See all works</a></div>
+<span class="tag">B. Grille bento</span>
+<script src="data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.getElementById("grid").innerHTML = PROJECTS.map(p => `
+  <a class="cell" href="#"><img src="${p.img}" alt=""><span class="arrow">↗</span>
+    <div class="info"><span class="label">${p.kind} &nbsp; ${p.year}</span><h2>${p.title}</h2><p class="m">${p.metric}</p><p class="s">${p.stack}</p></div></a>`).join("");
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray(".cell").forEach((c, i) => gsap.from(c, { y: 60, opacity: 0, duration: 1, ease: "power3.out", delay: (i % 3) * .08, scrollTrigger: { trigger: c, start: "top 92%" } }));
+</script>
+</body></html>

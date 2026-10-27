@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D. List with hover preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.list { list-style: none; margin: 0; padding: 0 var(--g); border-top: 1px solid var(--line); }
+.list li a { display: grid; grid-template-columns: 1fr auto auto; gap: 30px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); transition: padding .4s; }
+.list h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(4rem, 9vw, 9rem); line-height: .85; text-transform: uppercase; color: #3a3a3a; transition: color .3s; }
+.list .m { color: var(--muted); text-align: right; max-width: 22rem; }
+.list .y { font-family: var(--display); font-size: 2.6rem; color: #3a3a3a; }
+.list a:hover h2, .list a:hover .y { color: #fff; }
+.list a:hover { padding-left: 24px; }
+.preview { position: fixed; left: 0; top: 0; z-index: 15; width: 420px; height: 270px; border-radius: 12px; overflow: hidden; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.6); }
+.preview img { height: 100%; object-fit: cover; object-position: top; }
+@media (max-width: 860px) { .list li a { grid-template-columns: 1fr; gap: 4px; } .list .m { text-align: left; } .preview { display: none; } }
+</style></head>
+<body>
+<div class="bar"><b>EJ</b><span>About &nbsp; Portfolio &nbsp; Contact</span></div>
+<section class="intro"><div><h1>Selected work</h1><p>Option D: list with hover preview</p></div></section>
+<ul class="list" id="list"></ul>
+<div class="preview" id="pv"><img id="pvi" alt=""></div>
+<div class="more"><a href="#">See all works</a></div>
+<span class="tag">D. Liste + aperçu au survol</span>
+<script src="data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const list = document.getElementById("list");
+list.innerHTML = PROJECTS.map((p, i) => `<li><a href="#" data-i="${i}"><h2>${p.title}</h2><span class="m">${p.metric}</span><span class="y">${p.year}</span></a></li>`).join("");
+const pv = document.getElementById("pv"), img = document.getElementById("pvi");
+const xTo = gsap.quickTo(pv, "x", { duration: .5, ease: "power3" }), yTo = gsap.quickTo(pv, "y", { duration: .5, ease: "power3" });
+addEventListener("mousemove", e => { xTo(e.clientX); yTo(e.clientY); });
+list.querySelectorAll("a").forEach(a => {
+  a.addEventListener("mouseenter", () => { img.src = PROJECTS[a.dataset.i].img; gsap.to(pv, { opacity: 1, scale: 1, duration: .4 }); });
+  a.addEventListener("mouseleave", () => gsap.to(pv, { opacity: 0, scale: .6, duration: .3 }));
+});
+</script>
+</body></html>

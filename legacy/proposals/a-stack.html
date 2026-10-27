@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A. Stacked cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.work { padding: 0 var(--g); }
+.card { position: sticky; top: 90px; height: calc(100vh - 130px); margin-bottom: 6vh; }
+.inner { position: relative; height: 100%; border-radius: 14px; overflow: hidden; transform-origin: 50% 0; }
+.inner img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: top; }
+.inner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.85)); }
+.meta { position: absolute; z-index: 2; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+.meta .c { text-align: center; }
+.meta h2 { margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(3.5rem, 8vw, 8rem); line-height: .85; }
+.meta .m { color: #ddd; margin: 6px 0 0; }
+</style></head>
+<body>
+<div class="bar"><b>EJ</b><span>About &nbsp; Portfolio &nbsp; Contact</span></div>
+<section class="intro"><div><h1>Selected work</h1><p>Option A: stacked cards, like your current site</p></div></section>
+<section class="work" id="work"></section>
+<div class="more"><a href="#">See all works</a></div>
+<span class="tag">A. Cartes empilées</span>
+<script src="data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.getElementById("work").innerHTML = PROJECTS.map(p => `
+  <article class="card"><div class="inner"><img src="${p.img}" alt="">
+    <div class="meta"><span class="label">${p.year}</span><div class="c"><h2>${p.title}</h2><p class="m">${p.metric}</p></div><span class="label">${p.stack}</span></div>
+  </div></article>`).join("");
+gsap.registerPlugin(ScrollTrigger);
+const cards = gsap.utils.toArray(".card");
+cards.forEach((c, i) => {
+  const next = cards[i + 1]; if (!next) return;
+  gsap.fromTo(c.querySelector(".inner"), { scale: 1, filter: "blur(0px) brightness(1)" }, { scale: .9, filter: "blur(8px) brightness(.45)", ease: "none",
+    scrollTrigger: { trigger: next, start: "top bottom", end: "top 90px", scrub: true } });
+});
+</script>
+</body></html>

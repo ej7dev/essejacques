@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esse Jacques, Senior Full-Stack Engineer</title>
+<meta name="description" content="Senior full-stack engineer in Dakar. Payments, archives and public service platforms for institutions across West Africa.">
+<meta property="og:title" content="Esse Jacques, Senior Full-Stack Engineer">
+<meta property="og:description" content="Payments, archives and public service platforms for institutions across West Africa.">
+<meta property="og:image" content="img/boad.jpg">
+<link rel="icon" href="img/logo-ej.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0D0D;
+  --fg: #FFFFFF;
+  --muted: #8A8A8A;
+  --dim: #2A2A2A;
+  --pill: rgba(255, 255, 255, .14);
+  --display: "Six Caps", "Bebas Neue", Impact, sans-serif;
+  --text: "Poppins", system-ui, sans-serif;
+  --gutter: clamp(16px, 4.5vw, 60px);
+  --header: 100px;
+}
+* { box-sizing: border-box; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: var(--gutter); top: 12px; z-index: 100; background: var(--fg); color: var(--bg); padding: 8px 12px; }
+
+/* Cursor */
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none;
+  width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .7);
+  display: grid; place-items: center;
+  font-size: 0; font-weight: 500; color: var(--bg);
+  transition: width .3s, height .3s, margin .3s, background-color .3s, font-size .2s, border-color .3s;
+}
+.cursor.is-link { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: transparent; background: rgba(255, 255, 255, .15); }
+.cursor.is-view { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: var(--fg); border-color: var(--fg); font-size: .85rem; }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+/* Header */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--header);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--gutter);
+  transition: transform .4s ease;
+}
+.site-header.hide { transform: translateY(-100%); }
+.logo img { height: 28px; width: auto; }
+.site-header nav { display: flex; gap: clamp(18px, 3.4vw, 60px); font-size: .95rem; font-weight: 500; }
+.site-header nav a { position: relative; }
+.site-header nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: right; transition: transform .35s ease;
+}
+.site-header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Hero */
+.hero { height: 100vh; min-height: 560px; position: relative; display: grid; place-items: center; text-align: center; padding: 0 var(--gutter); }
+.hero-inner { will-change: transform, opacity; }
+.hero h1 {
+  margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(6rem, 21vw, 22rem); line-height: .9; letter-spacing: .01em; white-space: nowrap;
+}
+.split { display: inline-block; overflow: hidden; vertical-align: top; padding: .04em 0 .08em; margin-bottom: -.08em; }
+.split .ch { display: inline-block; will-change: transform; }
+.hero p {
+  margin: 1.2rem auto 0; max-width: 46rem; color: var(--muted);
+  text-transform: uppercase; font-size: clamp(.8rem, 1.2vw, 1rem); line-height: 1.5; font-weight: 500;
+}
+.hero-foot {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 36px;
+  display: flex; justify-content: space-between; align-items: center; font-size: .9rem; font-weight: 500;
+}
+.hero-foot .scroll-hint { display: inline-flex; align-items: center; gap: 14px; }
+.hero-foot svg { animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateY(4px); } }
+
+/* Projects stack */
+.work { padding: 40px var(--gutter) 10vh; }
+.card {
+  position: sticky; top: var(--header);
+  height: calc(100vh - var(--header) - 40px); min-height: 420px;
+  margin-bottom: 6vh;
+}
+.card-inner {
+  position: relative; height: 100%; border-radius: 14px; overflow: hidden;
+  transform-origin: 50% 0; background: #1A1A1A; will-change: transform, filter;
+}
+.card-inner img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+.card-inner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%); }
+.card-inner.no-img { background: radial-gradient(110% 90% at 50% 0%, #3A3F5C 0%, #22243A 45%, #121219 100%); }
+.card-inner.no-img .big {
+  position: absolute; inset: 0; display: grid; place-items: center; z-index: 1;
+  font-family: var(--display); text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.28);
+  font-size: clamp(8rem, 26vw, 26rem); line-height: .8; text-align: center;
+}
+.card-meta {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 16px;
+  padding: 0 clamp(16px, 4vw, 60px) clamp(18px, 4vh, 40px);
+}
+.card-meta h3 {
+  margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(3.4rem, 8vw, 8.5rem); line-height: .85; text-align: center; grid-column: 2;
+}
+.pill { justify-self: start; background: var(--pill); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 999px; padding: 5px 16px; font-size: .85rem; color: rgba(255,255,255,.85); }
+.pill.right { justify-self: end; }
+.card button.open {
+  position: absolute; inset: 0; z-index: 3; width: 100%; background: none; border: 0; cursor: pointer; border-radius: 14px;
+}
+.case-src { display: none; }
+
+/* Tagline */
+.tagline { text-align: center; padding: 14vh var(--gutter) 10vh; color: var(--muted); font-weight: 500; text-transform: uppercase; font-size: clamp(.95rem, 1.4vw, 1.15rem); }
+
+/* Skills */
+.skills { padding: 4vh var(--gutter) 12vh; text-align: center; }
+.skills .label { font-weight: 500; font-size: .95rem; text-transform: uppercase; margin: 0 0 2vh; }
+.skills ul { list-style: none; margin: 0; padding: 0; }
+.skills li {
+  font-family: var(--display); text-transform: uppercase; color: var(--dim);
+  font-size: clamp(3.6rem, 9.5vw, 8.4rem); line-height: .98;
+}
+
+/* Contact strip */
+.contact-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; padding: 4vh var(--gutter) 14vh; }
+.contact-strip svg { width: 26px; height: 26px; fill: var(--fg); margin: 0 auto 14px; display: block; }
+.contact-strip strong { display: block; font-weight: 600; font-size: 1.05rem; }
+.contact-strip span { color: var(--muted); font-weight: 500; }
+.contact-strip a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+
+/* About */
+.about { padding: 14vh var(--gutter) 10vh; }
+.about-head { text-align: center; }
+.about-head p { margin: 0; color: var(--muted); text-transform: uppercase; font-weight: 500; }
+.about-head h2 {
+  margin: .5rem 0 0; font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(8rem, 24vw, 22rem); line-height: .85;
+}
+.about-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(32px, 6vw, 96px); max-width: 1180px; margin: 10vh auto 0; }
+.about-body .bio { font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.55; margin: 0; font-weight: 300; }
+.about-body .bio strong { font-weight: 500; }
+.timeline { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--dim); }
+.timeline li { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 4px 24px; padding: 22px 0; border-bottom: 1px solid var(--dim); }
+.timeline .when { color: var(--muted); font-size: .9rem; padding-top: 3px; }
+.timeline h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.timeline .org { color: var(--muted); margin: 0 0 6px; font-size: .95rem; }
+.timeline p { margin: 0; font-size: .95rem; color: #CFCFCF; }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 10vh; }
+.btn { display: inline-block; padding: 14px 30px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); font-weight: 500; transition: background-color .3s, color .3s; }
+.btn:hover, .btn.solid { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* Footer */
+.site-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 30px var(--gutter) 34px; font-size: .9rem; font-weight: 500; }
+.site-footer .back { display: inline-flex; align-items: center; gap: 18px; justify-self: start; background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0; }
+.site-footer .follow { justify-self: end; display: flex; gap: 22px; }
+.site-footer .follow a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Case study dialog */
+dialog.case {
+  width: min(1100px, 100vw - 2 * var(--gutter)); max-height: calc(100vh - 80px);
+  margin: auto; padding: 0; border: 0; border-radius: 16px; background: #151515; color: var(--fg);
+}
+dialog.case::backdrop { background: rgba(0, 0, 0, .75); backdrop-filter: blur(6px); }
+.case-wrap { padding: clamp(24px, 5vw, 56px); overflow: auto; max-height: calc(100vh - 80px); }
+.case-wrap h2 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(3.4rem, 8vw, 6.5rem); line-height: .9; }
+.case-wrap .sub { margin: 0 0 32px; color: var(--muted); }
+.case-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.case-cols h4 { margin: 0 0 8px; font-size: .9rem; font-weight: 600; color: var(--muted); }
+.case-cols p { margin: 0; font-size: .98rem; }
+.case-stack { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 32px 0 0; padding: 0; }
+.case-stack li { background: var(--pill); border-radius: 999px; padding: 4px 14px; font-size: .85rem; }
+.case-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: none; color: var(--fg); font-size: 1.4rem; cursor: pointer; }
+
+@media (max-width: 860px) {
+  :root { --header: 76px; }
+  .site-header nav a:not(.keep) { display: none; }
+  .card { height: 62vh; min-height: 340px; }
+  .card-meta { grid-template-columns: 1fr 1fr; }
+  .card-meta h3 { grid-column: 1 / -1; grid-row: 1; }
+  .contact-strip { grid-template-columns: 1fr; }
+  .about-body, .case-cols { grid-template-columns: 1fr; }
+  .timeline li { grid-template-columns: 1fr; }
+  .site-footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .site-footer .back, .site-footer .follow { justify-self: center; }
+}
+@media (max-width: 560px) {
+  .hero h1 { white-space: normal; font-size: 38vw; line-height: .85; }
+  .hero h1 .split { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-foot svg { animation: none; }
+  .skills li { color: var(--fg); }
+  .card { position: relative; top: auto; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to projects</a>
+<div class="cursor" aria-hidden="true">View</div>
+
+<header class="site-header">
+  <a class="logo" href="#top" aria-label="Esse Jacques, back to top"><img src="img/logo-ej.png" alt="EJ" width="44" height="28"></a>
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#work">Portfolio</a>
+    <a class="keep" href="CV_Esse_Jacques_EN.pdf" target="_blank" rel="noopener">My Resume</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <div class="hero-inner">
+    <h1 data-split aria-label="Esse Jacques">Esse Jacques</h1>
+    <p class="hero-sub">I am a senior full-stack engineer based in Dakar.<br>I design, build and run payments, archives and public service platforms for West Africa.</p>
+  </div>
+  <div class="hero-foot">
+    <a class="scroll-hint" href="#work">Scroll to Explore <svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+    <span>Featured Projects</span>
+  </div>
+</section>
+
+<section class="work" id="work" aria-label="Featured projects">
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/boad.jpg" alt="BOAD electronic archiving system on a desktop screen" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>BOAD Archiver</h3><span class="pill right">Java, Archiving, AI search</span></div>
+      <button class="open" aria-label="Open the BOAD Archiver case study"></button>
+      <div class="case-src">
+        <h2>BOAD Archiver</h2><p class="sub">Regional development bank. 100% of the bank's archives.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>The bank's archives lived in MaarchRM, a legacy system to replace without losing a single document.</p></div>
+          <div><h4>What I built</h4><p>A new generation electronic archiving system: domain model redesigned from scratch, migration of the legacy archives, OCR, semantic search and an AI chatbot, and an append-only hash-chained journal that guarantees integrity.</p></div>
+          <div><h4>Result</h4><p>The system now holds 100% of the bank's archives, with Azure AD sign-in.</p></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/senelec.jpg" alt="SENELEC single window dashboard on a laptop" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>Senelec</h3><span class="pill right">Spring Boot, Keycloak, SOAP</span></div>
+      <button class="open" aria-label="Open the SENELEC case study"></button>
+      <div class="case-src">
+        <h2>Senelec Guichet Unique</h2><p class="sub">National electricity utility. 60% faster request processing.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>Requests to the utility went through several desks and systems.</p></div>
+          <div><h4>What I built</h4><p>A single window platform: a Spring Boot API, a partner portal and an internal back office, with SOAP integration to SENELEC's systems, document management and centralized authentication with Keycloak (OAuth2, RBAC).</p></div>
+          <div><h4>Result</h4><p>Requests are processed 60% faster.</p></div>
+        </div>
+        <ul class="case-stack"><li>Spring Boot</li><li>SOAP</li><li>Keycloak</li><li>OAuth2</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner no-img">
+      <span class="big" aria-hidden="true">Socium</span>
+      <div class="card-meta"><span class="pill">2025</span><h3>Socium Workflow</h3><span class="pill right">Angular 20, NestJS, Redis</span></div>
+      <button class="open" aria-label="Open the Socium Workflow case study"></button>
+      <div class="case-src">
+        <h2>Socium Workflow v2</h2><p class="sub">HR SaaS used in 20+ African countries. Rebuilt from scratch, front end and backend.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>Socium's HR suite serves clients such as the Presidency of Senegal and Senegal Numerique. Workflow needed a full rebuild while clients stayed in production.</p></div>
+          <div><h4>What I built</h4><p>As lead on Workflow: the whole v2 and its leave management engine (half days, balances, eligibility and seniority rules, server-side validation), bulk approvals, multi-step validation, server-side exports and Redis caching. I also led security across the five apps after a penetration test.</p></div>
+          <div><h4>Result</h4><p>A new product shipped with an Angular 15 to 20 migration and no break for clients in production.</p></div>
+        </div>
+        <ul class="case-stack"><li>Angular 20</li><li>NestJS</li><li>MongoDB Atlas</li><li>Redis</li><li>Keycloak</li><li>Kubernetes</li><li>Azure</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner no-img">
+      <span class="big" aria-hidden="true">Pay</span>
+      <div class="card-meta"><span class="pill">2023</span><h3>Cauris Pay</h3><span class="pill right">Fintech, Mobile money</span></div>
+      <button class="open" aria-label="Open the Cauris Pay case study"></button>
+      <div class="case-src">
+        <h2>Cauris Pay</h2><p class="sub">Mobile money aggregator. Five operators, one integration.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>Merchants had to integrate Orange Money, Wave, MTN, Airtel and M-Pesa one by one.</p></div>
+          <div><h4>What I built</h4><p>A single integration point in NestJS with idempotent payments, so a customer is never charged twice. On top: a hosted checkout, a merchant dashboard and an admin console.</p></div>
+          <div><h4>Result</h4><p>Merchants accept every operator through one API. It also powers CaurisFlux, a Europe to Africa money transfer app in React Native.</p></div>
+        </div>
+        <ul class="case-stack"><li>NestJS</li><li>Angular</li><li>React Native</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/midgard.jpg" alt="Midgard FireWatch dashboard with map, cameras and alerts" loading="lazy">
+      <div class="card-meta"><span class="pill">2021</span><h3>Midgard Firewatch</h3><span class="pill right">Microservices, Real time</span></div>
+      <button class="open" aria-label="Open the Midgard FireWatch case study"></button>
+      <div class="case-src">
+        <h2>Midgard FireWatch</h2><p class="sub">French civil security start-up. Showcased at the Élysée.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>Firefighters needed to detect wildfires and smoke early.</p></div>
+          <div><h4>What I built</h4><p>A real-time detection platform with AI-powered detection from drone imagery, microservices in NestJS, Django and Java, and an Angular front end consuming sensor streams over WebSocket.</p></div>
+          <div><h4>Result</h4><p>Instant alerts for firefighters, and a platform showcased at the Élysée.</p></div>
+        </div>
+        <ul class="case-stack"><li>NestJS</li><li>Django</li><li>Java</li><li>Angular</li><li>WebSocket</li><li>NgRx</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner no-img">
+      <span class="big" aria-hidden="true">ADS</span>
+      <div class="card-meta"><span class="pill">2023</span><h3>ADS Inventory</h3><span class="pill right">Spring Boot, Angular</span></div>
+      <button class="open" aria-label="Open the ADS inventory case study"></button>
+      <div class="case-src">
+        <h2>ADS Highway Inventory</h2><p class="sub">Senegalese road agency. Under a minute per asset.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>The national highway asset inventory was done on paper.</p></div>
+          <div><h4>What I built</h4><p>A national inventory platform that replaced the paper process end to end.</p></div>
+          <div><h4>Result</h4><p>Each asset is now inventoried in under a minute.</p></div>
+        </div>
+        <ul class="case-stack"><li>Spring Boot</li><li>Angular</li><li>PostgreSQL</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner no-img">
+      <span class="big" aria-hidden="true">Bénin</span>
+      <div class="card-meta"><span class="pill">2024</span><h3>Presidency of Benin</h3><span class="pill right">Django, React Native</span></div>
+      <button class="open" aria-label="Open the Presidency of Benin case study"></button>
+      <div class="case-src">
+        <h2>Executive Cockpit</h2><p class="sub">Presidency of Benin. About 40 priority projects tracked.</p>
+        <div class="case-cols">
+          <div><h4>Context</h4><p>The Presidency needed one place to follow its priority government projects.</p></div>
+          <div><h4>What I built</h4><p>A Django REST API with a dedicated AI service for meeting summaries, a web dashboard and a React Native (Expo) mobile app.</p></div>
+          <div><h4>Result</h4><p>About 40 priority projects followed from web and mobile, with CI/CD on GitHub Actions and monitoring.</p></div>
+        </div>
+        <ul class="case-stack"><li>Django REST Framework</li><li>React Native</li><li>GitHub Actions</li><li>Docker</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/multivers.png" alt="Multivers website home page" loading="lazy">
+      <div class="card-meta"><span class="pill">2021</span><h3>Multivers</h3><span class="pill right">Development, DevOps</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/school.jpg" alt="School management mobile app screens" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>School Management</h3><span class="pill right">Development, Mobile</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/cauris-crm.png" alt="Agence Cauris CRM dashboard on a tablet" loading="lazy">
+      <div class="card-meta"><span class="pill">2022</span><h3>Agence Cauris CRM</h3><span class="pill right">Development, DevOps</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/tamoona.jpg" alt="Tamoona website on a desktop and a laptop" loading="lazy">
+      <div class="card-meta"><span class="pill">2022</span><h3>Tamoona</h3><span class="pill right">Development</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/mobile-app.jpg" alt="Booking mobile app screens" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>Mobile App</h3><span class="pill right">Development, Mobile</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/threads.jpg" alt="Threads style social app screens" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>Threads</h3><span class="pill right">Development, Mobile</span></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-inner">
+      <img src="img/social-app.jpg" alt="Social video app screens" loading="lazy">
+      <div class="card-meta"><span class="pill">2024</span><h3>Social App</h3><span class="pill right">Development, Mobile</span></div>
+    </div>
+  </article>
+</section>
+
+<p class="tagline">Crafting software solutions with elegance and efficiency.</p>
+
+<section class="skills" aria-labelledby="skills-label">
+  <p class="label" id="skills-label">My skills cover</p>
+  <ul>
+    <li>Full-stack development</li>
+    <li>Backend architecture</li>
+    <li>Mobile app development</li>
+    <li>Cloud and DevOps</li>
+    <li>Security and IAM</li>
+    <li>AI and document intelligence</li>
+  </ul>
+</section>
+
+<section class="contact-strip" id="contact" aria-label="Contact">
+  <a href="mailto:contact@essejacques.me">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+    <strong>contact@essejacques.me</strong><span>Email</span>
+  </a>
+  <div>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    <strong>Dakar, Senegal</strong><span>Address</span>
+  </div>
+  <a href="https://www.linkedin.com/in/esse-jacques" target="_blank" rel="noopener me">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+    <strong>esse-jacques</strong><span>LinkedIn</span>
+  </a>
+</section>
+
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="about-head">
+    <p>Unveiling my software engineering journey</p>
+    <h2 id="about-title" data-split aria-label="About">About</h2>
+  </div>
+  <div class="about-body">
+    <p class="bio"><strong>Senior full-stack engineer with 6+ years</strong> of experience designing, building and deploying web and mobile products for fintech, the public sector and SaaS. I work across the whole stack, from Java, Python and NestJS backends to Angular and React front ends, Flutter and React Native apps, and the Docker, Kubernetes and CI/CD pipelines that run them. I enjoy owning a product end to end: scoping with the client, technical design, leading developers and handling production.</p>
+    <ol class="timeline" reversed>
+      <li><span class="when">Dec 2024 to now</span><div><h3>Senior Full-Stack Engineer</h3><p class="org">Socium, Dakar</p><p>HR SaaS used in 20+ African countries. Lead on Workflow and Performance, security across all products, shared libraries and observability.</p></div></li>
+      <li><span class="when">Aug 2021 to Nov 2024</span><div><h3>Lead Developer</h3><p class="org">AXONE, Dakar</p><p>Led the development team. Platforms for the BOAD, SENELEC, the Presidency of Benin, CNFPLF, ADS and Digital Senegal, plus Cauris Pay.</p></div></li>
+      <li><span class="when">Aug 2020 to Aug 2021</span><div><h3>Software Development Consultant</h3><p class="org">Multivers, Paris (remote)</p><p>Recruitment websites for 9 London firms, FireWatch for Midgard, CI/CD and internal tooling.</p></div></li>
+    </ol>
+  </div>
+  <div class="cta">
+    <a class="btn solid" href="CV_Esse_Jacques_EN.pdf" download>Download my resume</a>
+    <a class="btn" href="mailto:contact@essejacques.me">Email me</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <button class="back" type="button"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Back Top</button>
+  <span><span id="year">2026</span> © EsseJacques. All rights reserved.</span>
+  <div class="follow">
+    <a href="https://www.linkedin.com/in/esse-jacques" target="_blank" rel="noopener me">LinkedIn</a>
+    <a href="https://github.com/ej7dev" target="_blank" rel="noopener me">GitHub</a>
+    <a href="https://www.behance.net/kirakira58" target="_blank" rel="noopener me">Behance</a>
+  </div>
+</footer>
+
+<dialog class="case" aria-label="Case study">
+  <button class="case-close" type="button" aria-label="Close">×</button>
+  <div class="case-wrap"></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Split display titles into letters for the reveal
+  document.querySelectorAll("[data-split]").forEach(el => {
+    const words = el.textContent.trim().split(" ");
+    el.innerHTML = words.map(w =>
+      `<span class="split" aria-hidden="true">${[...w].map(c => `<span class="ch">${c}</span>`).join("")}</span>`
+    ).join(" ");
+  });
+
+  // Case study dialog
+  const dialog = document.querySelector("dialog.case");
+  const wrap = dialog.querySelector(".case-wrap");
+  let lenis = null;
+  document.querySelectorAll(".card .open").forEach(btn => {
+    btn.addEventListener("click", () => {
+      wrap.innerHTML = btn.parentElement.querySelector(".case-src").innerHTML;
+      dialog.showModal();
+      lenis && lenis.stop();
+      if (!reduce && window.gsap) gsap.fromTo(dialog, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .45, ease: "power3.out" });
+    });
+  });
+  dialog.querySelector(".case-close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener("close", () => lenis && lenis.start());
+
+  // Back to top
+  document.querySelector(".site-footer .back").addEventListener("click", () => {
+    lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  // Custom cursor
+  const cursor = document.querySelector(".cursor");
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
+    addEventListener("mousemove", e => { x = e.clientX; y = e.clientY; });
+    (function loop() {
+      cx += (x - cx) * (reduce ? 1 : .18); cy += (y - cy) * (reduce ? 1 : .18);
+      cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+      requestAnimationFrame(loop);
+    })();
+    document.addEventListener("mouseover", e => {
+      cursor.classList.toggle("is-view", !!e.target.closest(".card .open"));
+      cursor.classList.toggle("is-link", !e.target.closest(".card .open") && !!e.target.closest("a, button"));
+    });
+  }
+
+  if (reduce || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Smooth scroll
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: .09 });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+      const target = document.querySelector(a.getAttribute("href"));
+      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: a.getAttribute("href") === "#top" ? 0 : -20 }); }
+    }));
+  }
+
+  // Header hides on scroll down, shows on scroll up
+  const header = document.querySelector(".site-header");
+  ScrollTrigger.create({ start: 200, onUpdate: s => header.classList.toggle("hide", s.direction === 1) });
+
+  // Hero load: letters rise, subtitle fades
+  gsap.from(".hero h1 .ch", { yPercent: 110, duration: 1.2, ease: "power4.out", stagger: .045, delay: .15 });
+  gsap.from([".hero-sub", ".hero-foot"], { opacity: 0, y: 20, duration: 1, ease: "power3.out", delay: .8, stagger: .15 });
+  gsap.from(".site-header", { opacity: 0, y: -20, duration: .8, delay: .6 });
+
+  // Hero leaves: moves up and fades
+  gsap.to(".hero-inner", { yPercent: -35, opacity: 0, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+  // Project stack: each card shrinks and blurs as the next one slides over it
+  const cards = gsap.utils.toArray(".card");
+  cards.forEach((card, i) => {
+    const inner = card.querySelector(".card-inner");
+    const img = inner.querySelector("img");
+    if (img) gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none",
+      scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true } });
+    gsap.from(inner.querySelector("h3"), { yPercent: 60, opacity: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: card, start: "top 70%" } });
+    const next = cards[i + 1];
+    if (!next) return;
+    gsap.fromTo(inner, { scale: 1, filter: "blur(0px) brightness(1)" }, { scale: .9, filter: "blur(8px) brightness(.45)", ease: "none",
+      scrollTrigger: { trigger: next, start: "top bottom", end: () => `top ${parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header"))}px`, scrub: true, invalidateOnRefresh: true } });
+  });
+
+  // Skills light up one by one while scrolling
+  gsap.utils.toArray(".skills li").forEach(li => {
+    gsap.to(li, { color: "#FFFFFF", ease: "none",
+      scrollTrigger: { trigger: li, start: "top 80%", end: "top 50%", scrub: true } });
+  });
+
+  // Tagline and contact fade in
+  gsap.from(".tagline", { opacity: 0, y: 30, duration: 1, scrollTrigger: { trigger: ".tagline", start: "top 85%" } });
+  gsap.from(".contact-strip > *", { opacity: 0, y: 30, duration: .9, stagger: .12, scrollTrigger: { trigger: ".contact-strip", start: "top 85%" } });
+
+  // About: big title letters rise when it enters
+  gsap.from(".about h2 .ch", { yPercent: 110, duration: 1.1, ease: "power4.out", stagger: .06,
+    scrollTrigger: { trigger: ".about h2", start: "top 80%" } });
+  gsap.from([".about-body", ".cta"], { opacity: 0, y: 40, duration: 1, stagger: .15,
+    scrollTrigger: { trigger: ".about-body", start: "top 85%" } });
+
+  addEventListener("load", () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

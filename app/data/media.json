@@ -1,0 +1,371 @@
+{
+ "/img/projects/4square-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/4square-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/ads-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/ads-inventory.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1446
+ },
+ "/img/projects/ads-item.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1446
+ },
+ "/img/projects/ads-sites.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1446
+ },
+ "/img/projects/benin-cockpit-dashboard.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/benin-cockpit-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/boad-dashboard.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/boad-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/boad-integrity.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/boad-journal.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/boad-record.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/boad-search.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/cauris-crm.webp": {
+  "h": 1200,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/caurisflux-admin-dashboard.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/caurisflux-admin-payment-methods.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/caurisflux-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/caurisflux-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/caurisflux-docs-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/caurisflux-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/cnfplf-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/crem-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/crem-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/denkmako-app-categories-mobile.webp": {
+  "h": 1695,
+  "w": 780
+ },
+ "/img/projects/denkmako-app-home-mobile.webp": {
+  "h": 1695,
+  "w": 780
+ },
+ "/img/projects/denkmako-app-product-mobile.webp": {
+  "h": 1695,
+  "w": 780
+ },
+ "/img/projects/denkmako-app-shops-mobile.webp": {
+  "h": 1695,
+  "w": 780
+ },
+ "/img/projects/denkmako-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/denkmako-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/denkmako-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/devsecops-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/digital-senegal-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/digital-senegal-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/digital-senegal-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/firewatch-alerts.webp": {
+  "h": 729,
+  "sm": 720,
+  "w": 1044
+ },
+ "/img/projects/firewatch-cameras.webp": {
+  "h": 729,
+  "sm": 720,
+  "w": 1044
+ },
+ "/img/projects/firewatch-dashboard.webp": {
+  "h": 729,
+  "sm": 720,
+  "w": 1044
+ },
+ "/img/projects/firewatch-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/firewatch-map.webp": {
+  "h": 729,
+  "sm": 720,
+  "w": 1044
+ },
+ "/img/projects/firewatch-media.webp": {
+  "h": 729,
+  "sm": 720,
+  "w": 1044
+ },
+ "/img/projects/gosbloom-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/gosbloom-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/jenkins-sonarqube-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/mobile-app.webp": {
+  "h": 896,
+  "sm": 720,
+  "w": 1280
+ },
+ "/img/projects/peridot-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/peridot-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/propriyo-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/propriyo-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/propriyo-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/school.webp": {
+  "h": 1120,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/senelec-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/senelec.webp": {
+  "h": 515,
+  "sm": 720,
+  "w": 920
+ },
+ "/img/projects/silverstone-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/silverstone-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/social-app.webp": {
+  "h": 1120,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/socium-performance-9box.webp": {
+  "h": 812,
+  "sm": 720,
+  "w": 1483
+ },
+ "/img/projects/socium-performance-dashboard.webp": {
+  "h": 812,
+  "sm": 720,
+  "w": 1483
+ },
+ "/img/projects/socium-performance-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/socium-security-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/socium-suite-apps.webp": {
+  "h": 812,
+  "sm": 720,
+  "w": 1483
+ },
+ "/img/projects/socium-workflow-builder.webp": {
+  "h": 831,
+  "sm": 720,
+  "w": 1456
+ },
+ "/img/projects/socium-workflow-dashboard.webp": {
+  "h": 812,
+  "sm": 720,
+  "w": 1483
+ },
+ "/img/projects/socium-workflow-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/sociumjob-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/sociumjob-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/sociumjob-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/spring-cloud-diagram.webp": {
+  "h": 760,
+  "sm": 720,
+  "w": 1600
+ },
+ "/img/projects/team-network-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/team-network-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/img/projects/threads.webp": {
+  "h": 896,
+  "sm": 720,
+  "w": 1280
+ },
+ "/img/projects/twoscore-desktop.webp": {
+  "h": 900,
+  "sm": 720,
+  "w": 1440
+ },
+ "/img/projects/twoscore-mobile.webp": {
+  "h": 1688,
+  "w": 780
+ },
+ "/video/boad.mp4": {
+  "h": 830,
+  "w": 1456
+ },
+ "/video/caurisflux-checkout.mp4": {
+  "h": 1298,
+  "w": 600
+ },
+ "/video/denkmako-app.mp4": {
+  "h": 1304,
+  "w": 600
+ },
+ "/video/firewatch.mp4": {
+  "h": 726,
+  "w": 1040
+ },
+ "/video/sociumjob.mp4": {
+  "h": 650,
+  "w": 1040
+ }
+}
